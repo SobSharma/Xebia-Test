@@ -1,0 +1,39 @@
+<section id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3>Henri Potter Books in Stock</h3>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 portfolio-item" *ngFor="let book of _books">
+
+                <img [src]="book.cover" class="img-responsive" alt="Cabin" style="width: 280px; height: 360px;">
+                <p>{{book.title}}</p>
+                <button class="btn btn-primary" (click)="showBookDetails(book)">View Decription</button>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #content let-c="close" let-d="dismiss" ngbModalContainer class="modal-size">
+    <div class="modal-header">
+        <!--<h3 class="modal-title">Book Description</h3>-->
+        <!--<img [src]="_selected_book.cover" class="img-responsive" alt="Cabin"  style="width: 180px; height: 240px; margin-left: 40%;">-->
+        <h3>{{_selected_book.title}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="caption">
+            <h4>Plot</h4>
+            <div class="caption-content" *ngFor="let story of _selected_book.synopsis">
+                <p>{{story}}</p>
+            </div>
+            <p style="margin-left: 47%;">Price: <span style="font-weight: bold;">
+                        {{_selected_book.price}}$</span></p>
+            <button class="btn btn-primary" style="margin-left: 45%;" (click)="AddtoCart()">Add to cart</button>
+        </div>
+    </div>
+</ng-template>

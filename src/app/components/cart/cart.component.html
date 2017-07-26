@@ -1,0 +1,56 @@
+<div class="container">
+    <h3>Selected Books</h3>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12" style="">
+            <div class="panel panel-default list-group-panel">
+                <div class="panel-body">
+                    <ul class="list-group list-group-header">
+                        <li class="list-group-item list-group-body">
+                            <div class="row">
+                                <div class="col-xs-6 text-left">Book name</div>
+                                <div class="col-xs-3">Price</div>
+
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-body" style="">
+                        <li class="list-group-item" *ngFor="let book of _headerService.books_in_cart">
+                            <div class="row">
+                                <div class="col-xs-6 text-left" style=" "><i class="fa fa-book" aria-hidden="true"></i> {{book.title}} </div>
+                                <div class="col-xs-3" style="">{{book.price}}$</div>
+                                <div class="col-xs-3" style="">
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-header">
+                        <li class="list-group-item list-group-body">
+                            <div class="row">
+                                <div class="col-xs-3" style=""></div>
+                                <div class="col-xs-6 text-left" style="float: right;" *ngIf="!show_discounted_price">Total: <span style="font-weight: bold;">
+                        {{total_price}}$</span></div>
+                                <div class="col-xs-6 text-left" style="float: right;" *ngIf="show_discounted_price">
+                                    New Discounted Price: <span style="font-weight: bold; text-decoration: line-through;">
+                        {{total_price}}$</span> <span style="font-weight: bold; color: green; font-size: 18px;">
+                        {{discount_price | number : '1.2-2'}}$</span> </div>
+                         
+
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="col-xs-6 text-left">
+                        <form action="/action_page.php">
+                            Discount coupon: <input type="text" name="Discount code" placeholder="Henri" [(ngModel)]="entered_code" name="entered_code">
+                            <button class="btn btn-info" style="margin-right: 10%;" [disabled]="entered_code != 'Henri'" (click)="getOffer()" *ngIf="!show_discounted_price">View Offer</button>
+                            <button class="btn btn-info" style="margin-right: 10%;" (click)="removeOffer()" *ngIf="show_discounted_price">Remove Offer</button>
+                        </form>
+                    </div>
+                    <br>
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

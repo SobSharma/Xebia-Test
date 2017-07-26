@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">La bibliothèque de Henri Potier</a>
+        </div>
+                <ul class="nav navbar-nav navbar-left">
+             <li><a routerLink="{{'/homepage'}}" class="nav-link primary-nav__link">
+           Homepage
+            </a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 40px;">
+            <li><i class="fa fa-shopping-cart" style="font-size: 3em;" aria-hidden="true" (click)="checkOutCart()"></i>
+                <span style="font-weight: bold; color: red;">{{books_cart?.length}}</span></li>
+        </ul>
+    </div>
+</nav>
